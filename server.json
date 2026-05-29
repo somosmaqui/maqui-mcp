@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.luis-fuentes/maqui",
+  "title": "Maqui Analytics",
+  "description": "Marketing analytics for local businesses — Instagram, ads, web traffic, SEO and reviews.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/somosmaqui/maqui-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.somosmaqui.com/api/mcp",
+      "authorization_url": "https://app.somosmaqui.com/oauth/authorize"
+    }
+  ]
+}

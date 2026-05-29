@@ -1,0 +1,36 @@
+{
+  "name": "@somosmaqui/mcp-server",
+  "version": "1.0.0",
+  "description": "All-in-one marketing analytics MCP server — Instagram, ads, web traffic, SEO and reviews for local businesses and the agencies that manage them",
+  "homepage": "https://somosmaqui.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somosmaqui/maqui-mcp"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "analytics",
+    "marketing",
+    "instagram",
+    "google-ads",
+    "meta-ads",
+    "google-analytics",
+    "search-console",
+    "restaurant",
+    "local-business",
+    "agency"
+  ],
+  "license": "MIT",
+  "mcp": {
+    "server": {
+      "url": "https://app.somosmaqui.com/api/mcp",
+      "transport": "http",
+      "auth": {
+        "type": "oauth2",
+        "authorizationUrl": "https://app.somosmaqui.com/oauth/authorize",
+        "tokenUrl": "https://app.somosmaqui.com/oauth/token"
+      }
+    }
+  }
+}

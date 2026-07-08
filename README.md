@@ -82,7 +82,7 @@ Get your API token from the Maqui dashboard, then configure your client manually
 
 **Other clients** — use the server URL with an `Authorization: Bearer YOUR_API_TOKEN` header.
 
-> API tokens are generated per account from the Maqui admin panel and are valid for one year.
+> API tokens are generated per account from the Maqui admin panel and are valid for one year. They can be revoked at any time from the dashboard — access is cut off immediately, without affecting any other account's token.
 
 ---
 
@@ -90,7 +90,7 @@ Get your API token from the Maqui dashboard, then configure your client manually
 
 Maqui is built for marketing agencies managing multiple clients. Each client account has an isolated dataset and its own API token — there is no cross-account data access.
 
-If you manage several clients, each gets their own token scoped to their data. You can configure multiple instances in your AI client:
+If you manage several clients, each gets their own token scoped to their data. When a client relationship ends, revoke that client's token from the admin panel and their access stops immediately — the other clients' tokens keep working. You can configure multiple instances in your AI client:
 
 ```json
 {

@@ -27,9 +27,7 @@
       "url": "https://app.somosmaqui.com/api/mcp",
       "transport": "http",
       "auth": {
-        "type": "oauth2",
-        "authorizationUrl": "https://app.somosmaqui.com/oauth/authorize",
-        "tokenUrl": "https://app.somosmaqui.com/oauth/token"
+        "type": "bearer"
       }
     }
   }

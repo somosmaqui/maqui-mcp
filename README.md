@@ -1,6 +1,6 @@
 # Maqui Analytics MCP Server
 
-All-in-one marketing analytics MCP — Instagram, ads, web traffic, SEO and reviews for local businesses and the agencies that manage them.
+All-in-one marketing analytics MCP for local businesses and agencies: Instagram, ads, web traffic, SEO and reviews.
 
 **Server URL:** `https://app.somosmaqui.com/api/mcp`
 
@@ -33,39 +33,23 @@ Connect Maqui to your AI assistant and query all your marketing channels in plai
 
 ## Compatible clients
 
-Works with any MCP-compatible AI client:
+Use a client that supports Streamable HTTP with a custom `Authorization` header, or a local stdio bridge such as `mcp-remote`.
 
-- [Claude Desktop](https://claude.ai/download) and [Claude.ai](https://claude.ai)
-- [ChatGPT](https://chatgpt.com) (with MCP support enabled)
-- [Cursor](https://cursor.com)
-- [Windsurf](https://codeium.com/windsurf)
-- [Cline](https://github.com/cline/cline)
-- [Continue](https://continue.dev)
-- Any client that supports the [Model Context Protocol](https://modelcontextprotocol.io)
+OAuth-only connector flows are currently unavailable. A client must be able to supply the per-account bearer token.
 
 ---
 
 ## Authentication
 
-Maqui uses per-account authentication. Each client account has its own token — data is always scoped to that account.
+Maqui uses a bearer API token issued from the Maqui admin panel. Each token is scoped to one account, expires after one year and can be revoked independently. The endpoint requires authentication for both introspection and data queries.
 
-### Option A: OAuth 2.0 (recommended for Claude.ai, ChatGPT and modern clients)
+**OAuth is currently disabled.** There is no automatic OAuth login or PKCE flow available at the public endpoint. The OAuth discovery and authorization endpoints return `404` with `oauth_temporarily_disabled`.
 
-Clients that support OAuth 2.0 can connect automatically. Maqui implements the full PKCE flow:
+Access is provisioned by Maqui. A listing in an MCP directory does not provide an account or a token.
 
-| Endpoint | URL |
-|---|---|
-| Discovery | `https://app.somosmaqui.com/.well-known/oauth-authorization-server` |
-| Authorization | `https://app.somosmaqui.com/oauth/authorize` |
-| Token | `https://app.somosmaqui.com/oauth/token` |
+### Direct Streamable HTTP
 
-Just add the server URL to your client — it will handle login automatically.
-
-### Option B: Bearer token (for Claude Desktop and manual configuration)
-
-Get your API token from the Maqui dashboard, then configure your client manually.
-
-**Claude Desktop** — add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+For clients that accept remote MCP URLs and custom headers:
 
 ```json
 {
@@ -80,9 +64,31 @@ Get your API token from the Maqui dashboard, then configure your client manually
 }
 ```
 
-**Other clients** — use the server URL with an `Authorization: Bearer YOUR_API_TOKEN` header.
+### Local stdio bridge
 
-> API tokens are generated per account from the Maqui admin panel and are valid for one year. They can be revoked at any time from the dashboard — access is cut off immediately, without affecting any other account's token.
+For clients that launch a local MCP process (requires Node.js):
+
+```json
+{
+  "mcpServers": {
+    "maqui": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://app.somosmaqui.com/api/mcp",
+        "--header",
+        "Authorization:Bearer ${MAQUI_TOKEN}"
+      ],
+      "env": {
+        "MAQUI_TOKEN": "YOUR_API_TOKEN"
+      }
+    }
+  }
+}
+```
+
+Keep real tokens out of public repositories and shared configuration examples.
 
 ---
 

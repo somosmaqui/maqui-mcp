@@ -12,7 +12,21 @@
     {
       "type": "streamable-http",
       "url": "https://app.somosmaqui.com/api/mcp",
-      "authorization_url": "https://app.somosmaqui.com/oauth/authorize"
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Per-account bearer API token issued by Maqui.",
+          "value": "Bearer {api_token}",
+          "variables": {
+            "api_token": {
+              "description": "API token issued from the Maqui admin panel.",
+              "isRequired": true,
+              "isSecret": true
+            }
+          },
+          "isRequired": true
+        }
+      ]
     }
   ]
 }

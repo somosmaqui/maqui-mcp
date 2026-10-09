@@ -17,6 +17,7 @@ Connect Maqui to your AI assistant and query all your marketing channels in plai
 | **Meta Ads** | Facebook & Instagram ad spend, reach, leads, messages, purchases |
 | **Google Analytics 4** | Sessions, users, bounce rate, top pages, traffic sources |
 | **Search Console** | Organic clicks, impressions, rankings, top queries and pages |
+| **Microsoft Clarity** | Sessions, engagement, behavior signals, top pages and traffic sources |
 | **Reviews** | Google Business & Facebook ratings, response rate, recent reviews |
 | **CRM / Leads** | Pipeline leads by status and source |
 | **POS Sales** | Fudo restaurant sales by channel (dine-in, delivery, counter) |
@@ -52,7 +53,11 @@ Existing bearer API tokens remain available from the Maqui admin panel. Each API
 
 Choose **Probar solo con datos sintéticos** on the OAuth consent page to try all 22 tools without signing in. Demo responses are explicitly marked and use fictional examples for September 2026. They never query client metrics, and changing `account_id` cannot switch a demo token to real data. The requested date range is shown separately from the fixed sample period; the demo does not apply every filter.
 
-Directory health checks can use a separate, revocable demo bearer token issued by Maqui, valid for 30 days. Never publish that credential in a README or repository. A Glama listing does not mean its test profile has already been configured.
+Directory health checks can use a separate, revocable demo bearer token issued by an authenticated Maqui admin, valid for 30 days. In the dashboard, choose **Admin → Tokens MCP → Generar token demo para Glama**, verify the demo responses, then configure the directory's test profile. Never publish that credential in a README or repository. Use a separate credential for each directory.
+
+The [Glama connector](https://glama.ai/mcp/connectors/io.github.luis-fuentes/maqui) was verified **Healthy on October 9, 2026**, with 22 indexed tools and a synthetic demo in **Admin → Test Profile → API Key → Bearer Authentication**. This test profile uses a demo bearer token; it does not establish OAuth compatibility with Glama. Renew the demo before its 30-day expiry to keep the checks active.
+
+[![Maqui Analytics MCP connector](https://glama.ai/mcp/connectors/io.github.luis-fuentes/maqui/badges/score.svg)](https://glama.ai/mcp/connectors/io.github.luis-fuentes/maqui)
 
 ### Direct Streamable HTTP
 

@@ -33,19 +33,26 @@ Connect Maqui to your AI assistant and query all your marketing channels in plai
 
 ## Compatible clients
 
-Use a client that supports Streamable HTTP with a custom `Authorization` header, or a local stdio bridge such as `mcp-remote`.
+Connect an MCP client that supports Streamable HTTP and OAuth authorization with PKCE. Maqui accepts approved client registrations or Client ID Metadata Documents from approved origins. Unrecognized clients and callback URLs are rejected; contact Maqui to request support for another client.
 
-OAuth-only connector flows are currently unavailable. A client must be able to supply the per-account bearer token.
+Clients that accept a custom `Authorization` header can also use a per-account API token. A local stdio bridge such as `mcp-remote` supports this alternative.
 
 ---
 
 ## Authentication
 
-Maqui uses a bearer API token issued from the Maqui admin panel. Each token is scoped to one account, expires after one year and can be revoked independently. The endpoint requires authentication for both introspection and data queries.
+OAuth is available at the public endpoint with resource discovery, PKCE S256 and explicit consent. Sign in with your Maqui account, then approve read access. OAuth access tokens expire after one hour. When the client requests `offline_access`, refresh tokens rotate and expire within 30 days; reuse revokes the token family. Older OAuth connections must reconnect.
 
-**OAuth is currently disabled.** There is no automatic OAuth login or PKCE flow available at the public endpoint. The OAuth discovery and authorization endpoints return `404` with `oauth_temporarily_disabled`.
+Protected resource metadata: `https://app.somosmaqui.com/.well-known/oauth-protected-resource/api/mcp`.
+Authorization server metadata: `https://app.somosmaqui.com/.well-known/oauth-authorization-server`.
 
-Access is provisioned by Maqui. A listing in an MCP directory does not provide an account or a token.
+Existing bearer API tokens remain available from the Maqui admin panel. Each API token is scoped to one account, expires after one year and can be revoked independently. The endpoint requires a valid token for both tool discovery and data queries. Access to real business data is provisioned by Maqui.
+
+### Synthetic demo
+
+Choose **Probar solo con datos sintéticos** on the OAuth consent page to try all 22 tools without signing in. Demo responses are explicitly marked and use fictional examples for September 2026. They never query client metrics, and changing `account_id` cannot switch a demo token to real data. The requested date range is shown separately from the fixed sample period; the demo does not apply every filter.
+
+Directory health checks can use a separate, revocable demo bearer token issued by Maqui, valid for 30 days. Never publish that credential in a README or repository. A Glama listing does not mean its test profile has already been configured.
 
 ### Direct Streamable HTTP
 

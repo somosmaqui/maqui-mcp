@@ -6,14 +6,14 @@ All-in-one marketing analytics MCP for local businesses and agencies: Instagram,
 
 ## Official registry
 
-Canonical server name: **`com.somosmaqui/maqui`**, verified through the `somosmaqui.com` domain.
+Current registry name: **`io.github.luis-fuentes/maqui`**.
 
-- [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/com.somosmaqui%2Fmaqui/versions/latest)
+- [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.luis-fuentes%2Fmaqui/versions/latest)
 - [Website and setup guide](https://somosmaqui.com/asistentes-ia)
 
-The previous registry name, `io.github.luis-fuentes/maqui`, remains available during the transition for directories already linked to it. Both records point to the same hosted endpoint. Existing connections keep using that endpoint.
+The proposed domain-based name, `com.somosmaqui/maqui`, is verified through `somosmaqui.com` but is **not published**. The Registry rejected publication because the remote URL is already assigned to the current name. The prepared manifest is `.registry/server-domain.json`; migration requires resolving that URL ownership with Registry maintainers. Keep the existing record and directory links until a migration is confirmed.
 
-The version in `server.json` identifies a published registry record; the hosted service reports its dashboard build version separately. Release **1.0.1** updates the registry identity and adds the website URL. It does not change the MCP endpoint or authentication.
+The version in `server.json` identifies a published registry record; the hosted service reports its dashboard build version separately. Release **1.0.1** adds the website URL while preserving the current registry identity. It does not change the MCP endpoint or authentication.
 
 ### Publishing registry metadata
 

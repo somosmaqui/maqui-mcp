@@ -4,6 +4,25 @@ All-in-one marketing analytics MCP for local businesses and agencies: Instagram,
 
 **Server URL:** `https://app.somosmaqui.com/api/mcp`
 
+## Official registry
+
+Canonical server name: **`com.somosmaqui/maqui`**, verified through the `somosmaqui.com` domain.
+
+- [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/com.somosmaqui%2Fmaqui/versions/latest)
+- [Website and setup guide](https://somosmaqui.com/asistentes-ia)
+
+The previous registry name, `io.github.luis-fuentes/maqui`, remains available during the transition for directories already linked to it. Both records point to the same hosted endpoint. Existing connections keep using that endpoint.
+
+The version in `server.json` identifies a published registry record; the hosted service reports its dashboard build version separately. Release **1.0.1** updates the registry identity and adds the website URL. It does not change the MCP endpoint or authentication.
+
+### Publishing registry metadata
+
+Update `server.json` and the matching version in `package.json` when publishing a registry release. Published records are immutable, so use a new version for metadata changes. Changes to the hosted implementation do not require editing each directory individually; downstream synchronization depends on the directory.
+
+Domain verification uses the public TXT record in `.registry/dns-record.txt`. The publishing key is excluded from Git in `.registry/.env`; its encrypted SOPS backup is `.registry/.env.enc`, using Maqui's existing age recipient. Never publish the plaintext key or registry authentication cache.
+
+Validate with `mcp-publisher validate server.json`, authenticate using the domain key, then publish with `mcp-publisher publish server.json`. Publishing is a separate step from pushing this repository; no automatic registry publishing workflow is configured yet.
+
 ---
 
 ## What you can ask

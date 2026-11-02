@@ -1,9 +1,10 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.luis-fuentes/maqui",
+  "name": "com.somosmaqui/maqui",
   "title": "Maqui Analytics",
   "description": "Marketing analytics for local businesses — Instagram, ads, web traffic, SEO and reviews.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "websiteUrl": "https://somosmaqui.com/asistentes-ia",
   "repository": {
     "url": "https://github.com/somosmaqui/maqui-mcp",
     "source": "github"

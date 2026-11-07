@@ -151,3 +151,11 @@ If you manage several clients, each gets their own token scoped to their data. W
 [Maqui](https://somosmaqui.com) is a marketing analytics platform for restaurants, retail, and service businesses. It syncs data daily from Instagram, Google Ads, Meta Ads, Google Analytics, Search Console, Google Business reviews, and POS systems — and makes it queryable through a conversational interface.
 
 → [somosmaqui.com](https://somosmaqui.com)
+
+---
+
+## License
+
+The documentation, registry metadata and configuration examples in this repository are available under the [MIT License](LICENSE).
+
+The hosted Maqui service and its backend are proprietary. They are not included in this repository and are not covered by this license, which also grants no rights to the Maqui name or brand.
